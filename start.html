@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+
+    <link rel="icon" type="image/x-icon" href="icon.png">
+</head>
+
+<body>
+    <div id="bg">
+        <svg id="icon" xmlns="http://www.w3.org/2000/svg" fill="#FAF9F6" class="bi bi-eyeglasses" viewBox="0 0 16 16">
+            <path
+                d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A1.993 1.993 0 0 0 8 6c-.532 0-1.016.208-1.375.547zM14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z" />
+        </svg>
+        <input id='input' type="text" placeholder="Search" autofocus spellcheck="false" onkeypress="go(event)" />
+    </div>
+    <div id="mail-container">
+        <div id="mail-circle"></div>
+        <svg id="mail" xmlns="http://www.w3.org/2000/svg" fill="#FAF9F6" class="bi bi-envelope" viewBox="0 0 16 16" onclick="gomail()">
+            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+        </svg>
+    </div>
+    <div id="circle"></div>
+</body>
+
+<style>
+    body {
+        margin: 0px;
+        font-family: 'Roboto Slab', serif;
+        overflow: hidden;
+    }
+
+    #bg {
+        height: 100vh;
+        width: 100vw;
+        background: linear-gradient(-45deg, #00264D 0%, #000B18 100%);
+        background-repeat: no-repeat;
+    }
+
+    #input {
+        font-size: 12vh;
+        text-align: center;
+        width: 100vw;
+        border: 0px;
+        background: none;
+        outline: none;
+        color: #FAF9F6;
+        opacity: .9;
+        margin-top: 42vh;
+        font-family: 'Roboto Slab', serif;
+    }
+
+    #input::placeholder {
+        color: #FAF9F6;
+        opacity: .5;
+    }
+    #input::selection {
+        color: #FAF9F6;;
+        background: none;
+    }
+    #icon {
+        position: absolute;
+        width: 10vw;
+        margin-left: 45vw;
+        margin-top: 20vh;
+        opacity: .9;
+    }
+
+    #circle {
+        position: absolute;
+        background-color: #FAF9F6;
+        top: -50vh;
+        left: -50vw;
+        width: 200vw;
+        height: 200vw;
+        border-radius: 100vw;
+        animation-name: open;
+        animation-duration: 4s;
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes open {
+        0%   {top:-50vh;width: 200vw;height: 200vw;left: -50vw;}
+        6%   {top:-50vh;width: 200vw;height: 200vw;left: -50vw;}
+        100% {top:100vw;width: 0vw;height: 0vw;left: 50vw;}
+    }
+    #mail-container {
+        position: absolute;
+        width: 6vw;
+        height: 6vw;
+        left: 94vw;
+        top: 0vw;
+    }
+    #mail {
+        position: absolute;
+        width: 1.3vw;
+        top: 2vw;
+        left: 2.85vw;
+        transition: .3s;
+        cursor: pointer;
+    }
+    #mail-circle {
+        position: absolute;
+        width: 0vw;
+        height: 0vw;
+        border-radius: 20vw;
+        left: 6vw;
+        top: 0vw;
+        background-color: #FAF9F6;
+        transition: .4s;
+    }
+    #mail-container:hover > #mail-circle {
+        width: 12vw;
+        height: 12vw;
+        left: 0vw;
+        top: -6vw;
+    }
+    #mail-container:hover > #mail {
+        fill: #00264D;
+    }
+</style>
+<script>
+    function go(e) {
+        if(e.keyCode === 13){
+            e.preventDefault();
+            input = document.getElementById('input').value;
+            if (input.slice(-4) == '.com' || input.slice(-3) == '.hu') {
+                url = 'http://' + input;
+                window.open(url, '_blank').focus();
+            }
+            else {
+                url = 'https://www.google.com/search?q=' + input;
+                window.open(url, '_blank').focus();
+            }
+            document.getElementById('input').select();
+        }
+    }
+    function gomail(e) {
+        url = 'https://mail.google.com/mail/u/0/#inbox'
+        window.open(url, '_blank').focus();
+    }
+</script>
+
+</html>
