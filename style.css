@@ -1,0 +1,136 @@
+body {
+    margin: 0px;
+    font-family: 'Roboto Slab', serif;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+#bg {
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    background: linear-gradient(-90deg, #00264D 0%, #000B18 100%);
+    background-repeat: repeat;
+}
+
+#input {
+    font-size: 12vh;
+    text-align: center;
+    width: 100vw;
+    border: 0px;
+    background: none;
+    outline: none;
+    color: #FAF9F6;
+    opacity: .9;
+    margin-top: 42vh;
+    font-family: 'Roboto Slab', serif;
+    transition: .6s;
+    z-index: 999;
+}
+
+#input::placeholder {
+    color: #FAF9F6;
+    opacity: .5;
+}
+
+#input::selection {
+    color: #FAF9F6;
+    background: none;
+}
+
+#icon {
+    position: absolute;
+    width: 10vw;
+    margin-left: 45vw;
+    margin-top: 20vh;
+    opacity: .9;
+    transition: .6s;
+    z-index: 999;
+}
+
+#circle {
+    position: absolute;
+    background-color: #FAF9F6;
+    top: -50vh;
+    left: -50vw;
+    width: 200vw;
+    height: 200vw;
+    border-radius: 100vw;
+    animation-name: open;
+    animation-duration: 4s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes open {
+    0% {
+        top: -50vh;
+        width: 200vw;
+        height: 200vw;
+        left: -50vw;
+    }
+
+    6% {
+        top: -50vh;
+        width: 200vw;
+        height: 200vw;
+        left: -50vw;
+    }
+
+    100% {
+        top: 100vw;
+        width: 0vw;
+        height: 0vw;
+        left: 50vw;
+    }
+}
+
+#mail-container {
+    position: fixed;
+    width: 6vw;
+    height: 6vw;
+    left: 94vw;
+    top: 0vw;
+}
+
+#mail {
+    position: absolute;
+    width: 1.3vw;
+    top: 2vw;
+    left: 2.85vw;
+    transition: .3s;
+    cursor: pointer;
+}
+
+#mail-circle {
+    position: absolute;
+    width: 0vw;
+    height: 0vw;
+    border-radius: 20vw;
+    left: 6vw;
+    top: 0vw;
+    background-color: #ffffff;
+    transition: .4s;
+}
+
+#mail-container:hover>#mail-circle {
+    width: 12vw;
+    height: 12vw;
+    left: 0vw;
+    top: -6vw;
+}
+
+#mail-container:hover>#mail {
+    fill: #00264D;
+}
+
+#web_search_container {
+    position: absolute;
+    top: 100vh;
+    width: 80vw;
+    left: 10vw;
+    height: 120vh;
+    transition: .8s;
+    border: 1px solid red;
+}
