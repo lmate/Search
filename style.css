@@ -11,8 +11,9 @@ body {
     right: 0px;
     top: 0px;
     bottom: 0px;
-    background: linear-gradient(-90deg, #00264D 0%, #000B18 100%);
+    background: linear-gradient(90deg, #00264D 50%, #000B18 100%);
     background-repeat: repeat;
+    z-index: -9999;
 }
 
 #input {
@@ -22,24 +23,24 @@ body {
     border: 0px;
     background: none;
     outline: none;
-    color: #FAF9F6;
+    color: #EDEDED;
     opacity: .9;
     margin-top: 42vh;
     font-family: 'Roboto Slab', serif;
     transition: .6s;
-    z-index: 999;
+    z-index: 998;
+    position: fixed;
 }
 
 #input::placeholder {
-    color: #FAF9F6;
+    color: #EDEDED;
     opacity: .5;
 }
 
 #input::selection {
-    color: #FAF9F6;
-    background: none;
+    color: #00264D;
+    background: #EDEDED;
 }
-
 #icon {
     position: absolute;
     width: 10vw;
@@ -47,19 +48,20 @@ body {
     margin-top: 20vh;
     opacity: .9;
     transition: .6s;
-    z-index: 999;
+    z-index: 998;
+    position: fixed;
 }
 
 #circle {
     position: absolute;
-    background-color: #FAF9F6;
+    background-color: #EDEDED;
     top: -50vh;
     left: -50vw;
     width: 200vw;
     height: 200vw;
     border-radius: 100vw;
     animation-name: open;
-    animation-duration: 4s;
+    animation-duration: 2.5s;
     animation-fill-mode: forwards;
 }
 
@@ -92,6 +94,7 @@ body {
     height: 6vw;
     left: 94vw;
     top: 0vw;
+    z-index: 999;
 }
 
 #mail {
@@ -110,7 +113,7 @@ body {
     border-radius: 20vw;
     left: 6vw;
     top: 0vw;
-    background-color: #ffffff;
+    background-color: #EDEDED;
     transition: .4s;
 }
 
@@ -128,9 +131,138 @@ body {
 #web_search_container {
     position: absolute;
     top: 100vh;
-    width: 80vw;
-    left: 10vw;
-    height: 120vh;
+    width: 40vw;
+    left: 15vw;
+    height: 0vh;
+    padding-bottom: 5vh;
     transition: .8s;
-    border: 1px solid red;
+}
+
+.result_title {
+    color: #EDEDED;
+    display: inline;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+}
+
+.result_icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.result_link {
+    color: #EDEDED;
+    opacity: .5;
+    font-size: 12px;
+    cursor: pointer;
+    margin-top: 5px;
+    margin-bottom: 0px;
+}
+
+.result_snippet {
+    color: #EDEDED;
+    font-size: 14px;
+    opacity: .8;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 55px;
+}
+
+.result_container:hover>.result_title {
+    text-decoration-line: underline;
+}
+
+#top-bar {
+    position: fixed;
+    width: 100vw;
+    height: 9vh;
+    left: 0px;
+    top: 0px;
+    background: linear-gradient(90deg, #00264D 50%, #000B18 100%);
+}
+
+#top-bar:before {
+    content: "";
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(90deg, #00264D 50%, #000B18 100%);
+    transform: translate3d(0px, 50px, 0) scale(1);
+    filter: blur(10px);
+    border-radius: inherit;
+}
+
+#top-bar:after {
+    content: "";
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: inherit;
+    border-radius: inherit;
+}
+
+#bottom-bar {
+    width: 100%;
+    height: 4vh;
+    color: #EDEDED;
+    font-size: 12px;
+    text-align: right;
+}
+
+#body::-webkit-scrollbar {
+    width: 10px;
+}
+
+#body::-webkit-scrollbar-thumb {
+    background-color: #EDEDED;
+    border: 30px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+#math-solver-overlay {
+    position: absolute;
+    width: 20vw;
+    height: 6vh;
+    left: 40vw;
+    top: 100vh;
+    background-color: #EDEDED;
+    border-radius: 6vh;
+    transition: .2s;
+    filter: drop-shadow(0px 0px 25px rgba(0, 0, 0, 0.4));
+}
+#math-solver-overlay-label {
+    font-size: 3.5vh;
+    margin-top: .55vh;
+    margin-left: 1.5vw;
+    white-space: nowrap;
+    color: #00264D;
+}
+#math-solver-inpage {
+    position: absolute;
+    width: 15vw;
+    height: 4vh;
+    left: 15vw;
+    top: 100vh;
+    background-color: #EDEDED;
+    border-radius: 6vh;
+    transition: .6s;
+    filter: drop-shadow(0px 0px 25px rgba(0, 0, 0, 0.4));
+}
+#math-solver-inpage-label {
+    font-size: 2.2vh;
+    margin-top: .55vh;
+    margin-left: 1vw;
+    white-space: nowrap;
+    color: #00264D;
 }

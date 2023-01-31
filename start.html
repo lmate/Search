@@ -15,27 +15,33 @@
 </head>
 
 <body id="body" onload="onload()">
-    <div id="bg">
-        <svg id="icon" xmlns="http://www.w3.org/2000/svg" fill="#FAF9F6" class="bi bi-eyeglasses" viewBox="0 0 16 16">
-            <path
-                d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A1.993 1.993 0 0 0 8 6c-.532 0-1.016.208-1.375.547zM14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z" />
-        </svg>
-        <input id='input' type="text" placeholder="Search" autofocus spellcheck="false" onkeypress="go(event)" />
+    <div id="web_search_container"></div>
+    <div id="math-solver-inpage">
+        <p id="math-solver-inpage-label"></p>
+    </div>
+    <div id="top-bar"></div>
+    <div id="bg"></div>
+    <svg id="icon" onclick='location.reload()' xmlns="http://www.w3.org/2000/svg" fill="#EDEDED" class="bi bi-eyeglasses" viewBox="0 0 16 16">
+        <path
+            d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A1.993 1.993 0 0 0 8 6c-.532 0-1.016.208-1.375.547zM14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z" />
+    </svg>
+    <input id='input' type="text" placeholder="Search" autofocus spellcheck="false" autocomplete="off" onkeypress="go(event)" oninput="input_change()"/>
+    <div id="math-solver-overlay">
+        <p id="math-solver-overlay-label"></p>
     </div>
     <div id="mail-container">
         <div id="mail-circle"></div>
-        <svg id="mail" xmlns="http://www.w3.org/2000/svg" fill="#FAF9F6" class="bi bi-envelope" viewBox="0 0 16 16"
+        <svg id="mail" xmlns="http://www.w3.org/2000/svg" fill="#EDEDED" class="bi bi-envelope" viewBox="0 0 16 16"
             onclick="gomail()">
             <path
                 d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z" />
         </svg>
     </div>
-    <div id="web_search_container">
-
-    </div>
     <div id="circle"></div>
 
 
     <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.5.0/math.min.js" integrity="sha512-CTGbAVWJ6AABEPglq77mqB8mXjBRcmtfnxsISZEnJijuJnwooQTMpqDsuIfoXns5HUoDME1Ka0wZ/sBO2jfwgg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
+
 </html>
