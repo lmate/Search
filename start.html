@@ -13,8 +13,15 @@
     <link rel="icon" type="image/x-icon" href="icon.png">
 </head>
 
-<body>
+<body id="body" onload="onload()">
     <div id="bg">
+        <div id="google_search_box_border"></div>
+        <script async src="https://cse.google.com/cse.js?cx=03cf5749caf814492"></script>
+        <div id="searchbox_container">
+            <div id="g_search" class="gcse-search"></div>
+        </div>
+        <div id="google_search_box_hide"></div>
+        <div id="google_search_box_border_topstrip"></div>
         <svg id="icon" xmlns="http://www.w3.org/2000/svg" fill="#FAF9F6" class="bi bi-eyeglasses" viewBox="0 0 16 16">
             <path
                 d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A1.993 1.993 0 0 0 8 6c-.532 0-1.016.208-1.375.547zM14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z" />
@@ -23,8 +30,10 @@
     </div>
     <div id="mail-container">
         <div id="mail-circle"></div>
-        <svg id="mail" xmlns="http://www.w3.org/2000/svg" fill="#FAF9F6" class="bi bi-envelope" viewBox="0 0 16 16" onclick="gomail()">
-            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+        <svg id="mail" xmlns="http://www.w3.org/2000/svg" fill="#FAF9F6" class="bi bi-envelope" viewBox="0 0 16 16"
+            onclick="gomail()">
+            <path
+                d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z" />
         </svg>
     </div>
     <div id="circle"></div>
@@ -34,14 +43,18 @@
     body {
         margin: 0px;
         font-family: 'Roboto Slab', serif;
-        overflow: hidden;
+        overflow-x: hidden;
+        overflow-y: hidden;
     }
 
     #bg {
-        height: 100vh;
-        width: 100vw;
-        background: linear-gradient(-45deg, #00264D 0%, #000B18 100%);
-        background-repeat: no-repeat;
+        position: fixed;
+        left: 0px;
+        right: 0px;
+        top: 0px;
+        bottom: 0px;
+        background: linear-gradient(-90deg, #00264D 0%, #000B18 100%);
+        background-repeat: repeat;
     }
 
     #input {
@@ -55,22 +68,28 @@
         opacity: .9;
         margin-top: 42vh;
         font-family: 'Roboto Slab', serif;
+        transition: .6s;
+        z-index: 999;
     }
 
     #input::placeholder {
         color: #FAF9F6;
         opacity: .5;
     }
+
     #input::selection {
-        color: #FAF9F6;;
+        color: #FAF9F6;
         background: none;
     }
+
     #icon {
         position: absolute;
         width: 10vw;
         margin-left: 45vw;
         margin-top: 20vh;
         opacity: .9;
+        transition: .6s;
+        z-index: 999;
     }
 
     #circle {
@@ -87,10 +106,28 @@
     }
 
     @keyframes open {
-        0%   {top:-50vh;width: 200vw;height: 200vw;left: -50vw;}
-        6%   {top:-50vh;width: 200vw;height: 200vw;left: -50vw;}
-        100% {top:100vw;width: 0vw;height: 0vw;left: 50vw;}
+        0% {
+            top: -50vh;
+            width: 200vw;
+            height: 200vw;
+            left: -50vw;
+        }
+
+        6% {
+            top: -50vh;
+            width: 200vw;
+            height: 200vw;
+            left: -50vw;
+        }
+
+        100% {
+            top: 100vw;
+            width: 0vw;
+            height: 0vw;
+            left: 50vw;
+        }
     }
+
     #mail-container {
         position: absolute;
         width: 6vw;
@@ -98,6 +135,7 @@
         left: 94vw;
         top: 0vw;
     }
+
     #mail {
         position: absolute;
         width: 1.3vw;
@@ -106,6 +144,7 @@
         transition: .3s;
         cursor: pointer;
     }
+
     #mail-circle {
         position: absolute;
         width: 0vw;
@@ -113,39 +152,157 @@
         border-radius: 20vw;
         left: 6vw;
         top: 0vw;
-        background-color: #FAF9F6;
+        background-color: #ffffff;
         transition: .4s;
     }
-    #mail-container:hover > #mail-circle {
+
+    #mail-container:hover>#mail-circle {
         width: 12vw;
         height: 12vw;
         left: 0vw;
         top: -6vw;
     }
-    #mail-container:hover > #mail {
+
+    #mail-container:hover>#mail {
         fill: #00264D;
     }
+
+    #g_search {
+        width: 100%;
+        height: 100%;
+    }
+    #searchbox_container {
+        position: absolute;
+        top: 100vh;
+        width: 80vw;
+        left: 10vw;
+        height: 90vh;
+        transition: .8s;
+        overflow-y: scroll;
+    }
+
+    #google_search_box_hide {
+        position: absolute;
+        width: 100vw;
+        height: 12.4vh;
+        top: 100vh;
+        left: 0vw;
+        background: linear-gradient(-90deg, #00264D 0%, #000B18 100%);
+        transition: .8s;
+    }
+    #google_search_box_border {
+        position: absolute;
+        top: 103vh;
+        width: 80vw;
+        left: 10vw;
+        height: 93vh;
+        background-color: #ffffff;
+        border-radius: .5vw;
+        transition: .8s;
+    }
+    #google_search_box_border_topstrip {
+        position: absolute;
+        top: 110vh;
+        width: 80vw;
+        left: 10vw;
+        height: 2vh;
+        background-color: #ffffff;
+        border-top-left-radius: .5vw;
+        border-top-right-radius: .5vw;
+        transition: .8s;
+    }
 </style>
+
 <script>
+    // When loading document
+    function onload() {
+        // Hide Google search stuff
+        //document.getElementById('g_search').style.display = 'none';
+
+        setTimeout(() => {
+            document.getElementById('circle').style.display = 'none';
+        }, 3000)
+    }
+
+    // Variable of interval that waits for results
+    var waiting_for_results;
+
+    // Starting search on enter
     function go(e) {
-        if(e.keyCode === 13){
+        if (e.keyCode === 13) {
             e.preventDefault();
+            // Setting input to the entered text
             input = document.getElementById('input').value;
+            // If a domain is entered, go to the site, instead of searching
             if (input.slice(-4) == '.com' || input.slice(-3) == '.hu') {
                 url = 'http://' + input;
-                window.open(url, '_blank').focus();
+                //window.open(url, '_blank').focus();
             }
+            // If not, do the search
             else {
-                url = 'https://www.google.com/search?q=' + input;
-                window.open(url, '_blank').focus();
+                // Copy input to google search box
+                document.getElementById('gsc-i-id1').value = input;
+                // Click search button
+                document.getElementsByClassName('gsc-search-button gsc-search-button-v2')[0].click();
+
+                // Start animation
+                document.getElementById('icon').style.width = '3.5vw';
+                document.getElementById('icon').style.marginLeft = '3vw';
+                document.getElementById('icon').style.marginTop = '1.5vw';
+
+                document.getElementById('input').style.marginTop = '2vw';
+                document.getElementById('input').style.fontSize = '4vh';
+
+                document.getElementById('searchbox_container').style.top = '4.5vh';
+
+                document.getElementById('google_search_box_hide').style.top = '1vh';
+
+                document.getElementById('google_search_box_border').style.top = '4vh';
+                document.getElementById('google_search_box_border_topstrip').style.top = '12vh';
             }
+            // Select text in the input so dont have to delete
             document.getElementById('input').select();
         }
     }
+
+    // Copying search results to search_output
+    function showresultss() {
+        // Check if number of results have grown
+        if (document.getElementsByClassName('gsc-webResult gsc-result').length > 1 || true) {
+
+            // Stop interval
+            clearInterval(waiting_for_results);
+
+            // Copy the results
+            // a gsc-wraper-t kell masolni, hogy legyenek reklamok
+            //document.getElementById('search_output').innerHTML = document.getElementById('master-1').innerHTML;
+            console.log(document.getElementById('master-2').contentWindow.body.innerHTML);
+            document.getElementById('search_output').innerHTML = document.getElementById('master-2').contentWindow.body.innerHTML;
+
+            console.log(document.getElementsByClassName('gsc-wrapper')[0].innerHTML);
+
+            // Start animations
+            document.getElementById('icon').style.width = '3.5vw';
+            document.getElementById('icon').style.marginLeft = '3vw';
+            document.getElementById('icon').style.marginTop = '1.5vw';
+
+            document.getElementById('input').style.marginTop = '2vw';
+            document.getElementById('input').style.fontSize = '4vh';
+
+            document.getElementById('search_output').style.top = '15vh';
+
+            document.getElementById('body').style.overflowY = 'scroll';
+
+            document.getElementById('g_search').style.top = '15vh';
+        }
+    }
+
+    // Go to mail when clicked
     function gomail(e) {
         url = 'https://mail.google.com/mail/u/0/#inbox'
         window.open(url, '_blank').focus();
     }
+
 </script>
 
 </html>
