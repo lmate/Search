@@ -231,7 +231,7 @@ body {
     border-bottom-left-radius: 5px;
 }
 #math-solver-overlay {
-    position: absolute;
+    position: fixed;
     width: 20vw;
     height: 6vh;
     left: 40vw;
@@ -249,7 +249,7 @@ body {
     color: #00264D;
 }
 #math-solver-inpage {
-    position: absolute;
+    position: fixed;
     width: 15vw;
     height: 4vh;
     left: 15vw;

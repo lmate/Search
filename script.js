@@ -148,8 +148,9 @@ function input_change() {
             // Load math solution (rounded) into the inpage output
             document.getElementById('math-solver-inpage-label').innerHTML = '= ' + math.round(math_solution, 5);
 
-            // Move the inpage math output into the page, and give the search result container a top margin, to make place for the math output
+            // Move the inpage math output into the page, give the search result container a top margin, to make place for the math output, and set inpage math output to abolute, so it scrolls with the page
             document.getElementById('math-solver-inpage').style.top = '15vh';
+            document.getElementById('math-solver-inpage').style.position = 'absolute';
             document.getElementById('web_search_container').style.marginTop = '9vh';
 
             // Move the overlay math output from the screen, and remove its content
@@ -182,6 +183,9 @@ function input_change() {
             // Move the inpage math output from the screen and hide its contents
             document.getElementById('math-solver-inpage-label').innerHTML = '';
             document.getElementById('math-solver-inpage').style.top = '100vh';
+
+            // Set inpage math output fixed, so it does not scroll with the page when hidden
+            document.getElementById('math-solver-inpage').style.position = 'fixed';
         }, 1500));
     }
 }
