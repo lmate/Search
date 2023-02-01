@@ -151,9 +151,13 @@ function input_change() {
         // Try solve math problem, throws error, if no soulution (no math probrem than)
         math_solution = math.evaluate(immediate_input);
         // Check if solution is good (e.g. giving back the only number in the input is not a solution)
-        if (!isNaN(math_solution) && math_solution != immediate_input) {
+        if (!isNaN(math_solution) && math_solution != immediate_input && immediate_input != '') {
             // If everything is right, math is solved
             math_solved = 1;
+        }
+        // Set math_solved to 0, even when math is solvable, but not good
+        else {
+            math_solved = 0;
         }
     }
     catch (err) {
@@ -201,11 +205,11 @@ function input_change() {
 
             // Move the overlay math output from the screen and hide its contents
             document.getElementById('math-solver-overlay-label').innerHTML = '';
-            document.getElementById('math-solver-overlay').style.top = '100vh';
+            document.getElementById('math-solver-overlay').style.top = '120vh';
 
             // Move the inpage math output from the screen and hide its contents
             document.getElementById('math-solver-inpage-label').innerHTML = '';
-            document.getElementById('math-solver-inpage').style.top = '100vh';
+            document.getElementById('math-solver-inpage').style.top = '120vh';
 
             // Set inpage math output fixed, so it does not scroll with the page when hidden
             document.getElementById('math-solver-inpage').style.position = 'fixed';
@@ -224,7 +228,7 @@ function start_transition() {
     document.getElementById('input').style.textAlign = 'left';
     document.getElementById('input').style.fontSize = '4vh';
 
-    document.getElementById('web_search_container').style.top = '15vh';
+    document.getElementById('web_search_container').style.top = '17vh';
 
     document.getElementById('body').style.overflowY = 'overlay';
 }
