@@ -266,3 +266,12 @@ body {
     white-space: nowrap;
     color: #00264D;
 }
+.error_msg_title {
+    color: #EDEDED;
+    display: inline;
+    font-size: 16px;
+}
+.error_msg_body {
+    color: #EDEDED;
+    font-size: 14px;
+}
