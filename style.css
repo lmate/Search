@@ -275,3 +275,42 @@ body {
     color: #EDEDED;
     font-size: 14px;
 }
+#wikifind_container {
+    position: absolute;
+    width: 18vw;
+    left: 60vw;
+    top: 120vh;
+    transition: .8s;
+    border-radius: 1vh;
+    background-color: #17395e;
+    filter: drop-shadow(0px 0px 25px rgba(0, 0, 0, 0.4));
+}
+#wikifind_img {
+    width: 100%;
+    border-top-left-radius: 1vh;
+    border-top-right-radius: 1vh;
+    max-height: 50vh;
+    object-fit: cover;
+}
+#wikifind_title {
+    color: #EDEDED;
+    font-size: 18px;
+    width: calc(100% - 2vw);
+    margin-top: .8vw;
+    margin-bottom: .8vw;
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+#wikifind_snippet {
+    color: #EDEDED;
+    font-size: 14px;
+    width: calc(100% - 2vw);
+    margin-left: 1vw;
+    margin-right: 1vw;
+    margin-bottom: 1vw;
+    margin-top: 0vw;
+}
+#wikifind_wikilink {
+    color: #EDEDED;
+    font-size: 14px;
+}

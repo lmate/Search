@@ -9,6 +9,8 @@ async function wiki_find(search_term) {
         let wikifind_response = await fetch('https://en.wikipedia.org/w/api.php?action=query&list=search&prop=pageimages&utf8=&format=json&origin=*&srlimit=1&srsearch=' + search_term, { signal: AbortSignal.timeout(10000) });
         let wikifind_result = await wikifind_response.json();
 
+        console.log(wikifind_result)
+
         // If no results are returned, wiki cant find matching
         if (wikifind_result.query.search.length < 1) {
             // Continue to DDG search
@@ -46,6 +48,13 @@ async function wiki_find(search_term) {
             if (wikifind_img != '') {
                 // Reset the sent back counter
                 sent_back_to_wikifind_counter = 0;
+
+                document.getElementById('wikifind_title').innerHTML = wikifind_title;
+                document.getElementById('wikifind_snippet').innerHTML = wikifind_snippet + "... <a id='wikifind_wikilink' target='_blank' href='https://wikipedia.org/wiki/" + wikifind_title + "'>Wikipedia</a>";
+                document.getElementById('wikifind_img').src = wikifind_img;
+
+                document.getElementById('wikifind_container').style.position = 'absolute';
+                document.getElementById('wikifind_container').style.top = '15vh';
 
                 console.log(wikifind_title);
                 console.log(wikifind_snippet);

@@ -30,8 +30,10 @@ function go(e) {
 
             // Reset the page when new search
             web_search_container.innerHTML = '';
-            window.scrollTo(0, 0);
             document.getElementById('web_search_container').style.top = '100vh';
+            document.getElementById('wikifind_container').style.top = '120vh';
+            document.getElementById('wikifind_container').style.position = 'fixed';
+            window.scrollTo(0, 0);
 
             // Show loading indicator until stopped, when fetch is done
             var loadingstate = 0;
