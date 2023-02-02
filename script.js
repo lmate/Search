@@ -6,12 +6,14 @@ function onload() {
     // Check if there already is a search query in the url, if yes, input it into the search bar and simulate an enter press to search
     if (urlSrcParams.has('q')) {
         document.getElementById('input').value = decodeURIComponent(urlSrcParams.get('q'));
-        document.getElementById('circle').style.display = 'none';
         go({ keyCode: 13 });
+        document.getElementById('input').style.transitionDuration = '0s';
+        document.getElementById('icon').style.transitionDuration = '0s';
         start_transition();
     }
     else {
         // Hiding the opening circle when out of screen
+        document.getElementById('circle').style.display = 'block';
         setTimeout(() => {
             document.getElementById('circle').style.display = 'none';
         }, 3000)

@@ -63,6 +63,7 @@ body {
     animation-name: open;
     animation-duration: 2.5s;
     animation-fill-mode: forwards;
+    display: none;
 }
 
 @keyframes open {
