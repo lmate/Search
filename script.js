@@ -1,10 +1,19 @@
 const parser = new DOMParser();
+const urlSrcParams = new URLSearchParams(window.location.search);
 
 // When loading document
 function onload() {
+
+    // Hiding the opening circle when out of screen
     setTimeout(() => {
         document.getElementById('circle').style.display = 'none';
     }, 3000)
+
+    // Check if there already is a search query in the url, if yes, input it into the search bar and simulate an enter press to search
+    if (urlSrcParams.has('q')) {
+        document.getElementById('input').value = decodeURIComponent(urlSrcParams.get('q'));
+        go({keyCode: 13});
+    }
 }
 
 //
@@ -16,9 +25,12 @@ var input;
 
 function go(e) {
     if (e.keyCode === 13) {
-        e.preventDefault();
         // Setting input varible to the entered text
         input = document.getElementById('input').value;
+
+        // Edit the search part of the url when a new search query is input
+        history.pushState({search: input}, "", "?q=" + encodeURIComponent(input));
+
         // If a domain is entered, go to the site, instead of searching
         if (input.slice(-4) == '.com' || input.slice(-3) == '.hu') {
             url = 'http://' + input;
