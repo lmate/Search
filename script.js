@@ -144,6 +144,7 @@ function go(e) {
 //
 function input_change() {
     instant_math();
+    instant_currency_convert();
 }
 
 // Start the transition to results view when everything is loaded

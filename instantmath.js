@@ -32,6 +32,8 @@ function instant_math() {
         for (var i = 0; i < running_timeouts_list.length; i++) {
             window.clearTimeout(running_timeouts_list[i]);
         }
+        running_timeouts_list = [];
+
         // If search results are already shown, use the inpage math output
         if (document.getElementById('input').style.marginTop == '2vw') {
             // Load math solution (rounded) into the inpage output
@@ -61,9 +63,10 @@ function instant_math() {
         // Wait a little with hiding the outputs in case the user is not done typing yet, just in the middle of a math problem, that cant yet be recognised as one
         // Add the timeout to a list, so hiding can still be stopped when there is multiple started
         running_timeouts_list.push(window.setTimeout(function () {
-
-            // Remove the search result containers margin, to move it back to its original place
-            document.getElementById('web_search_container').style.marginTop = '0vh';
+            if (document.getElementById('currency-converter-inpage').style.position == 'fixed') {
+                // Remove the search result containers margin, to move it back to its original place
+                document.getElementById('web_search_container').style.marginTop = '0vh';
+            }
 
             // Move the overlay math output from the screen and hide its contents
             document.getElementById('math-solver-overlay-label').innerHTML = '';

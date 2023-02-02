@@ -180,7 +180,7 @@ body {
 #top-bar {
     position: fixed;
     width: 100vw;
-    height: 9vh;
+    height: 7vh;
     left: 0px;
     top: 0px;
     background: linear-gradient(90deg, #00264D 50%, #000B18 100%);
@@ -278,7 +278,7 @@ body {
 #wikifind_container {
     position: absolute;
     width: 18vw;
-    left: 60vw;
+    left: 67vw;
     top: 120vh;
     transition: .8s;
     border-radius: 1vh;
@@ -313,4 +313,40 @@ body {
 #wikifind_wikilink {
     color: #EDEDED;
     font-size: 14px;
+}
+#currency-converter-overlay {
+    position: fixed;
+    width: 20vw;
+    height: 6vh;
+    left: 40vw;
+    top: 120vh;
+    background-color: #17395e;
+    border-radius: 1vh;
+    transition: .3s;
+    filter: drop-shadow(0px 0px 25px rgba(0, 0, 0, 0.4));
+}
+#currency-converter-overlay-label {
+    font-size: 3.5vh;
+    margin-top: .55vh;
+    margin-left: 1.5vw;
+    white-space: nowrap;
+    color: #EDEDED;
+}
+#currency-converter-inpage {
+    position: fixed;
+    width: 15vw;
+    height: 4.5vh;
+    left: 15vw;
+    top: 120vh;
+    background-color: #17395e;
+    border-radius: 1vh;
+    transition: .6s;
+    filter: drop-shadow(0px 0px 25px rgba(0, 0, 0, 0.4));
+}
+#currency-converter-inpage-label {
+    font-size: 2.5vh;
+    margin-top: .55vh;
+    margin-left: 1vw;
+    white-space: nowrap;
+    color: #EDEDED;
 }
