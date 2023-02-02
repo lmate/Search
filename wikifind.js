@@ -20,7 +20,7 @@ async function wiki_find(search_term) {
         var wikifind_snippet = wikifind_result.query.search[0].snippet;
 
         // Fetch the thumbnail for the found wiki article
-        let wikifind_response_img = await fetch('http://en.wikipedia.org/w/api.php?action=query&titles=' + wikifind_title + '&prop=pageimages&format=json&origin=*&pithumbsize=500', { signal: AbortSignal.timeout(10000) });
+        let wikifind_response_img = await fetch('https://en.wikipedia.org/w/api.php?action=query&titles=' + wikifind_title + '&prop=pageimages&format=json&origin=*&pithumbsize=500', { signal: AbortSignal.timeout(10000) });
         let wikifind_result_img = await wikifind_response_img.json();
 
         // And save the link to a variable
